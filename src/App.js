@@ -6,6 +6,10 @@ import Form from './components/Form';
 const API_KEY = '32c12dc9f661f83ab7d852b030685e1c';
 
 class App extends Component {
+  state = {
+    recipes: []
+  };
+
   getRecipe = async e => {
     const recipeName = e.target.elements.recipeName.value;
     e.preventDefault();
@@ -14,7 +18,8 @@ class App extends Component {
     );
 
     const data = await api_call.json();
-    console.log(data.recipes[0].recipe_id);
+    this.setState({ recipes: data.recipes });
+    console.log(this.state.recipes);
   };
 
   render() {
@@ -24,6 +29,9 @@ class App extends Component {
           <h1 className='App-title'>Recipe Search</h1>
         </header>
         <Form getRecipe={this.getRecipe} />
+        {this.state.recipes.map((recipe, index) => (
+          <p key={index}>{recipe.title}</p>
+        ))}
       </div>
     );
   }
