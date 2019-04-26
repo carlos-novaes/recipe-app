@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import Form from './components/Form';
 import './App.css';
 
+import Form from './components/Form';
+
+const API_KEY = '32c12dc9f661f83ab7d852b030685e1c';
+
 class App extends Component {
-  getRecipe = e => {
+  getRecipe = async e => {
+    const recipeName = e.target.elements.recipeName.value;
     e.preventDefault();
-    console.log('working!!');
+    const api_call = await fetch(
+      `https://www.food2fork.com/api/search?key=${API_KEY}&q=shredded%20chicken`
+    );
+
+    const data = await api_call.json();
+    console.log(data.recipes[0].recipe_id);
   };
 
   render() {
