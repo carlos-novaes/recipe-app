@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Form from './components/Form';
 import Recipes from './components/Recipes';
-
-const API_KEY = '32c12dc9f661f83ab7d852b030685e1c';
+import API_KEY from './config';
 
 class App extends Component {
   state = {
