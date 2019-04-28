@@ -22,4 +22,4 @@ yarn-error.log*
 
 # keys
 
-src/config
+src/config.js
